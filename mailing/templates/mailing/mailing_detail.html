@@ -1,26 +1,29 @@
 {% extends 'mailing/base.html' %}
 
 {% block content %}
-    <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <div class="header" style="width: 50rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ object.name }}</h2>
-                        <hr>
-                        Клиент:
-                        {% for client in object.mail_to.all %}
-                            <p class="my-0 fw-normal">{{ client }}</p>
-                        {% endfor %}
-                        <hr>
-                        <p class="card-text">Дата начала: {{ object.start_date }}</p>
-                        <p class="card-text">Дата окончания: {{ object.end_date }}</p>
-                        <p class="card-text">Периодичность: {{ object.interval }}</p>
-                        <p class="card-text">Владелец: {{ object.owner }}</p>
-                        <p class="card-text">Статус: {{ object.status }}</p>
-                    </div>
-                </div>
+<div class="container my-4">
+    <div class="card border-primary mb-3" style="max-width: 540px;">
+        <div class="card-header bg-primary text-white">
+            Информация о рассылке
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ object.name }}</h5>
+            <hr>
+            <div class="mb-3">
+                <strong>Клиенты:</strong>
+                {% for client in object.mail_to.all %}
+                    <p class="my-0 fw-normal">{{ client }}</p>
+                {% endfor %}
             </div>
+            <hr>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Дата начала:</strong> {{ object.start_date }}</li>
+                <li class="list-group-item"><strong>Дата окончания:</strong> {{ object.end_date }}</li>
+                <li class="list-group-item"><strong>Периодичность:</strong> {{ object.interval }}</li>
+                <li class="list-group-item"><strong>Владелец:</strong> {{ object.owner }}</li>
+                <li class="list-group-item"><strong>Статус:</strong> {{ object.status }}</li>
+            </ul>
         </div>
     </div>
+</div>
 {% endblock %}

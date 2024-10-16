@@ -12,14 +12,10 @@ class StyleFormMixin:
 
 
 class MailingForm(StyleFormMixin, forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['mail_to'].queryset = Client.email.all()
-
     class Meta:
         model = Mailing
         exclude = ('next_date', 'owner', 'status', 'is_activated',)
+
         widgets = {
             'start_date': DateTimeInput(attrs={'type': 'datetime-local'}),
             'end_date': DateTimeInput(attrs={'type': 'datetime-local'}),
@@ -33,10 +29,16 @@ class MailingForm(StyleFormMixin, forms.ModelForm):
 class ClientForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Client
-        fields = '__all__'
+        exclude = ('owner',)
 
 
 class MessageForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Message
-        fields = '__all__'
+        exclude = ('owner',)
+
+
+class MailingModeratorForm(StyleFormMixin, forms.ModelForm):
+    class Meta:
+        model = Mailing
+        fields = ('is_activated',)

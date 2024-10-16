@@ -1,16 +1,15 @@
 {% extends 'mailing/base.html' %}
 
 {% block content %}
-    <div class="col-12">
-        <div class="row">
-            <div class="col-6">
-                <div class="header" style="width: 50rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ object.topic }}</h2>
-                        <h5 class="card-title">{{ object.content }}</h5>
-                    </div>
-                </div>
-            </div>
+<div class="container my-4">
+    <div class="card border-primary mb-3" style="max-width: 540px;">
+        <div class="card-header bg-primary text-white">
+            Тема сообщения
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ object.topic }}</h5>
+            <p class="card-text">Содержание: {{ object.content }}</p>
         </div>
     </div>
+</div>
 {% endblock %}

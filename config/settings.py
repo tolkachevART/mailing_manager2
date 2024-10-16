@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mailing',
     'django_apscheduler',
+    'users',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -53,8 +55,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-
-
 
 DATABASES = {
     "default": {
@@ -110,3 +110,9 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = '/users/profile/'
+LOGOUT_REDIRECT_URL = '/users/login/'
+LOGIN_URL = '/users/'
