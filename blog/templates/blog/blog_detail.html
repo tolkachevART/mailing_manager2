@@ -1,0 +1,25 @@
+{% extends 'mailing/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="card border-primary mb-3" style="max-width: 540px;">
+        <div class="card-header bg-primary text-white">
+            <h3 class="title">Запись {{ object.title }}</h3>
+        </div>
+        <div class="card-body">
+            <p>{{ object.content }}</p>
+        </div>
+        {% if blog.image %}
+            <img class="card-img-top" src="{{ blog.image | media_filter }}" alt="Card image cap">
+        {% else %}
+            <p class="card-text">Нет изображения.</p>
+        {% endif %}
+        <p><strong>Просмотров: {{ blog.views_count }}</strong></p>
+        <div class="card-footer">
+            <small class="text-muted">Дата создания: {{ object.date_published }}</small>
+            <a class="btn btn-primary" href="{% url 'blog:blog_list'%}" role="button">Назад</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

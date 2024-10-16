@@ -1,0 +1,30 @@
+{% extends 'mailing/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="card border-primary mb-3" style="max-width: 540px;">
+        <div class="card-header bg-primary text-white">
+            Статистика сервиса
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Всего рассылок в сервисе - {{ mailings_count }}</h5>
+            <h5 class="card-title">Всего активных рассылок - {{ active_mailings_count }}</h5>
+            <h5 class="card-title">Число уникальных клиентов - {{ clients_count }}</h5>
+        </div>
+    </div>
+    <div class="row">
+        {% for blog in blog_list %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                    <p class="card-text">{{ blog.content|truncatechars:50 }}</p>
+                    <small class="text-muted">{{ blog.date_published }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

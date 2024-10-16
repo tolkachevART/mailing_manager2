@@ -10,6 +10,7 @@
             <h5 class="card-title">ФИО: {{ object.name }}</h5>
             <h5 class="card-title">Email: {{ object.email }}</h5>
             <p class="card-text">Комментарий: {{ object.commentary }}</p>
+            <a class="btn btn-primary" href="{% url 'mailing:clients' %}" role="button">Назад</a>
         </div>
     </div>
 </div>

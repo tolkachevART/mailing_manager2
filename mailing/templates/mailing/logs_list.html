@@ -1,15 +1,13 @@
 {% extends 'mailing/base.html' %}
 {% block content %}
-
     <div class="container">
-
+        <div class="row">
             {% for object in object_list %}
-                <h5>Рассылка: {{ object.mailing }}</h5>
+                <h3>Рассылка: {{ object.mailing }}</h3>
                 <p>Время последней рассылки: {{ object.last_datetime_sending }}</p>
                 <p>Статус: {{ object.status }}</p>
                 <p>---</p>
             {% endfor %}
-
+        </div>
     </div>
-
 {% endblock %}

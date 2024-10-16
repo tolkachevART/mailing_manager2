@@ -1,0 +1,37 @@
+{% extends 'mailing/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="col-12 mb-5">
+    <a class="btn btn-outline-primary" href="{% url 'blog:blog_create' %}">Добавить запись</a>
+</div>
+<div class="container">
+    <div class="row">
+        {% for object in object_list %}
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.title }}</h4>
+                </div>
+
+                <img class="card-img-top" src="{{ object.image | media_filter }}" alt="Card image cap">
+
+                <div class="card-body">
+                    <p class="card-text">{{ object.content }}</p>
+                    <p class="card-text">Просмотры: {{ object.views_count }}</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <a href="{% url 'blog:blog_view' object.pk %}"
+                       class="btn btn-sm btn-outline-secondary">Посмотреть</a>
+                    <a href="{% url 'blog:blog_edit' object.pk %}"
+                       class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                    <a href="{% url 'blog:blog_delete' object.pk %}"
+                       class="btn btn-sm btn-outline-danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -9,6 +9,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ object.topic }}</h5>
             <p class="card-text">Содержание: {{ object.content }}</p>
+            <a class="btn btn-primary" href="{% url 'mailing:message' %}" role="button">Назад</a>
         </div>
     </div>
 </div>
