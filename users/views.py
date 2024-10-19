@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse_lazy, reverse
 from django.utils.crypto import get_random_string
 from django.views import View
@@ -60,4 +60,30 @@ class ProfileView(LoginRequiredMixin, UpdateView):
 
 class UserListView(LoginRequiredMixin, ListView):
     model = User
-    extra_context = {'title': 'Пользователи', }
+    permission_required = 'users.can_view_users'
+    template_name = "users/user_list.html"
+
+    def get_queryset(self):
+        return User.objects.all()
+
+
+class UserBlockView(PermissionRequiredMixin, UpdateView):
+    model = User
+    permission_required = 'users.can_block_users'
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.is_active = False
+        user.save()
+        return redirect('users:users_list')
+
+
+class UserUnblockView(PermissionRequiredMixin, UpdateView):
+    model = User
+    permission_required = 'users.can_block_users'
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.is_active = True
+        user.save()
+        return redirect('users:users_list')

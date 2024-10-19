@@ -1,6 +1,7 @@
 import random
 
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
 
@@ -42,26 +43,35 @@ class MailingCreateView(CreateView):
         return super().form_valid(form)
 
 
-class MailingDetailView(DetailView):
+class MailingDetailView(LoginRequiredMixin, DetailView):
     model = Mailing
     template_name = 'mailing/mailing_detail.html'
+    permission_required = 'mailing.can_view_any_mailing'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.request.user == self.object.owner or self.request.user.has_perm('mailing.can_view_any_mailing'):
+            return self.object
+        raise PermissionDenied
 
 
-class MailingUpdateView(PermissionRequiredMixin, UpdateView):
+class MailingUpdateView(LoginRequiredMixin, UpdateView):
     model = Mailing
+    form_class = MailingForm
     permission_required = 'mailing.change_mailing'
     success_url = reverse_lazy('mailing:mailing')
 
     def get_form_class(self):
-        if self.request.user == self.get_object().owner:
+        user = self.request.user
+        if user == self.object.owner:
             return MailingForm
-        elif self.request.user.has_perm('mailing.set_is_activated'):
+        if user.has_perm("mailing.can_edit_is_active_mailing"):
             return MailingModeratorForm
+        raise PermissionDenied
 
 
 class MailingDeleteView(DeleteView):
     model = Mailing
-    success_url = reverse_lazy('mailing:mailing_list')
 
 
 class ClientListView(ListView):

@@ -71,6 +71,10 @@ class Mailing(models.Model):
         verbose_name = 'рассылка'
         verbose_name_plural = 'рассылки'
         ordering = ('start_date',)
+        permissions = [
+            ("can_edit_is_active_mailing", "Can edit active mailing"),
+            ("can_view_any_mailing", "Can view any mailing"),
+        ]
 
 
 class Logs(models.Model):

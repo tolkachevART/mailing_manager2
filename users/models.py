@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-
 NULLABLE = {'blank': True, 'null': True}
 ACTIVE_CHOICES = [
     (True, 'Активен'),
@@ -19,3 +18,12 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+
+    class Meta:
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
+        permissions = [("can_view_users", "Can view all users"),
+                       ("can_block_users", "Can block users"), ]
+
+    def __str__(self):
+        return self.email
