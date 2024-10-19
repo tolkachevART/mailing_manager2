@@ -1,0 +1,205 @@
+[
+{
+    "model": "mailing.client",
+    "pk": 1,
+    "fields": {
+        "name": "Шемякин Роман Герасимович",
+        "email": "roman66@hotmail.com",
+        "commentary": "Россия, г. Нижний Новгород, Чапаева ул., д. 18 кв.127",
+        "owner": 2
+    }
+},
+{
+    "model": "mailing.client",
+    "pk": 2,
+    "fields": {
+        "name": "Набойщикова Марфа Никандровна",
+        "email": "marfa7259@gmail.com",
+        "commentary": "Россия, г. Якутск, Совхозная ул., д. 1 кв.197",
+        "owner": 2
+    }
+},
+{
+    "model": "mailing.client",
+    "pk": 3,
+    "fields": {
+        "name": "Верещагин Кирилл Михаилович",
+        "email": "kirill.vereshchagin@mail.ru",
+        "commentary": "Россия, г. Димитровград, 17 Сентября ул., д. 19 кв.102",
+        "owner": 1
+    }
+},
+{
+    "model": "mailing.client",
+    "pk": 4,
+    "fields": {
+        "name": "Паршикова Марфа Денисовна",
+        "email": "marfa40@hotmail.com",
+        "commentary": "Россия, г. Сергиев Посад, Майская ул., д. 16 кв.182",
+        "owner": 1
+    }
+},
+{
+    "model": "mailing.client",
+    "pk": 5,
+    "fields": {
+        "name": "Гладков Егор Афанасьевич",
+        "email": "egor39@hotmail.com",
+        "commentary": "Россия, г. Благовещенск, Первомайский пер., д. 10 кв.18",
+        "owner": 1
+    }
+},
+{
+    "model": "mailing.client",
+    "pk": 6,
+    "fields": {
+        "name": "Зыков Ефим Егорович",
+        "email": "efim02051981@outlook.com",
+        "commentary": "Россия, г. Владикавказ, Дзержинского ул., д. 25 кв.211",
+        "owner": 3
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 1,
+    "fields": {
+        "topic": "Всероссийский день лицеиста",
+        "content": "Всероссийский день лицеиста, отмечаемый ежегодно 19 октября, обязан своим появлением учебному заведению, которое известно каждому образованному человеку в России.",
+        "owner": 3
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 2,
+    "fields": {
+        "topic": "День написания писем в будущее",
+        "content": "День написания писем в будущее. Неизвестно – кто и когда выступил инициатором даты, но идея отправить послание «сквозь года» понравилась многим, и праздник стал приобретать сторонников.",
+        "owner": 3
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 3,
+    "fields": {
+        "topic": "День спасателя в Казахстане",
+        "content": "В 2008 году к профессиональным праздникам в Республике Казахстан добавился День спасателя.",
+        "owner": 1
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 4,
+    "fields": {
+        "topic": "День беатификации матери Терезы",
+        "content": "День беатификации (англ. beatification — причисление к лику блаженных, первая ступень канонизации) католической подвижницы матери Терезы Калькуттской — 19 октября — отмечается в Албании как национальный праздник.",
+        "owner": 1
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 5,
+    "fields": {
+        "topic": "День сладостей в США",
+        "content": "Ежегодно в третью субботу октября в США отмечается День сладостей или День сладкого (англ. Sweetest Day — в дословном переводе — «Самый сладкий день»).",
+        "owner": 2
+    }
+},
+{
+    "model": "mailing.message",
+    "pk": 6,
+    "fields": {
+        "topic": "День юриста в Республике Молдове",
+        "content": "День юриста, ежегодно отмечаемый в Молдавии 19 октября, — праздник специалистов всех юридических профессий — судей, судебных исполнителей, адвокатов, нотариусов, юрисконсультов, преподавателей и студентов юридических факультетов учебных заведений, всех тех, кто стремится стать юристом.",
+        "owner": 2
+    }
+},
+{
+    "model": "mailing.mailing",
+    "pk": 1,
+    "fields": {
+        "name": "19 октября",
+        "message": 1,
+        "start_date": "2024-10-19T06:51:49Z",
+        "next_date": "2024-10-20T09:55:00Z",
+        "end_date": "2024-10-20T09:55:00Z",
+        "interval": "once",
+        "status": "created",
+        "is_activated": true,
+        "owner": 3,
+        "mail_to": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "mailing.mailing",
+    "pk": 2,
+    "fields": {
+        "name": "19 октября",
+        "message": 2,
+        "start_date": "2024-10-19T06:52:29Z",
+        "next_date": "2024-10-20T07:05:02.618Z",
+        "end_date": "2024-10-26T10:56:00Z",
+        "interval": "daily",
+        "status": "created",
+        "is_activated": true,
+        "owner": 1,
+        "mail_to": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "mailing.mailing",
+    "pk": 3,
+    "fields": {
+        "name": "19 октября",
+        "message": 5,
+        "start_date": "2024-10-19T06:53:01Z",
+        "next_date": "2024-10-26T07:05:03.326Z",
+        "end_date": "2024-10-24T06:53:00Z",
+        "interval": "weekly",
+        "status": "created",
+        "is_activated": false,
+        "owner": 2,
+        "mail_to": [
+            1,
+            2,
+            3,
+            4
+        ]
+    }
+},
+{
+    "model": "mailing.logs",
+    "pk": 1,
+    "fields": {
+        "mailing": 1,
+        "last_datetime_sending": "2024-10-19T07:05:02.027Z",
+        "status": "True"
+    }
+},
+{
+    "model": "mailing.logs",
+    "pk": 2,
+    "fields": {
+        "mailing": 2,
+        "last_datetime_sending": "2024-10-19T07:05:02.618Z",
+        "status": "True"
+    }
+},
+{
+    "model": "mailing.logs",
+    "pk": 3,
+    "fields": {
+        "mailing": 3,
+        "last_datetime_sending": "2024-10-19T07:05:03.326Z",
+        "status": "True"
+    }
+}
+]
