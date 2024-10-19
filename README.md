@@ -5,7 +5,7 @@
 1. **Установите зависимости**
 2. **Определите необходимые переменные окружения**
 3. **Сделайте миграции**:
-  python manage.py makemigrations
+  python manage.py makemigrations |
   python manage.py migrate
 4. **Создайте суперпользователя**
    python manage.py сsu
