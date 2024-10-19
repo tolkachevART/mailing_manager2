@@ -12,5 +12,9 @@
 5. **Запуск программы**
    python manage.py runserver
 6. **Сервис автоматической рассылки**:
-    python manage.py runapscheduler
+   python manage.py runapscheduler
+7. **Redis**:
+  sudo service redis-server start |
+  redis-cli
+    
 
