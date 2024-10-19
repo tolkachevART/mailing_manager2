@@ -8,7 +8,7 @@
   python manage.py makemigrations
   python manage.py migrate
 4. **Создайте суперпользователя**
-   python manage.py create_su
+   python manage.py сsu
 5. **Запуск программы**
    python manage.py runserver
 6. **Сервис автоматической рассылки**:
